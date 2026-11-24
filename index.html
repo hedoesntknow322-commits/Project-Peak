@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PROJECT PEAK is a safe Windows PC scanning and maintenance toolkit. Download version 1.0.">
+  <title>PROJECT PEAK | PC Optimization</title>
+  <style>
+    :root { color-scheme: dark; --bg:#080c16; --panel:#101a2c; --line:#203452; --blue:#48a7ff; --cyan:#72e1ff; --muted:#a9b9ce; --white:#f4f8ff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:Inter,Segoe UI,Arial,sans-serif; background:radial-gradient(ellipse at 70% 0%,#12305a 0%,transparent 38%),var(--bg); color:var(--white); line-height:1.6; }
+    a { color:inherit; }
+    .wrap { width:min(1080px,92%); margin:auto; }
+    header { border-bottom:1px solid #ffffff12; background:#080c16d9; position:sticky; top:0; backdrop-filter:blur(14px); z-index:5; }
+    nav { min-height:70px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { font-weight:900; letter-spacing:2px; font-size:19px; }
+    .brand span { color:var(--blue); }
+    nav a { text-decoration:none; color:var(--muted); font-size:14px; margin-left:22px; }
+    nav a:hover { color:white; }
+    .hero { padding:92px 0 72px; display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:center; }
+    .eyebrow { color:var(--cyan); text-transform:uppercase; letter-spacing:3px; font-size:12px; font-weight:800; }
+    h1 { font-size:clamp(42px,7vw,72px); line-height:1.02; letter-spacing:-2px; margin:16px 0 22px; }
+    h1 span { color:var(--blue); }
+    .lead { color:var(--muted); font-size:18px; max-width:620px; }
+    .actions { display:flex; flex-wrap:wrap; gap:13px; margin-top:30px; }
+    .btn { display:inline-flex; justify-content:center; align-items:center; border-radius:9px; padding:13px 20px; font-weight:800; text-decoration:none; border:1px solid var(--blue); transition:.18s; }
+    .primary { background:linear-gradient(120deg,#2187ef,#42baff); color:#06101e; box-shadow:0 8px 28px #1688ed38; }
+    .secondary { color:var(--white); background:#ffffff08; border-color:#426184; }
+    .btn:hover { transform:translateY(-2px); filter:brightness(1.12); }
+    .visual { min-height:310px; border:1px solid #2d5684; border-radius:20px; padding:24px; background:linear-gradient(145deg,#122642,#0b1423 70%); box-shadow:0 24px 70px #0008; position:relative; overflow:hidden; }
+    .visual:before { content:""; position:absolute; width:240px; height:240px; border:1px solid #3a9cff55; border-radius:50%; right:-40px; top:-50px; box-shadow:0 0 0 24px #3a9cff0b,0 0 0 48px #3a9cff08; }
+    .monitor { position:relative; z-index:1; border:1px solid #345477; background:#07111f; border-radius:12px; padding:18px; }
+    .monitor-top { display:flex; justify-content:space-between; color:#8eaac8; font-size:11px; letter-spacing:1.5px; }
+    .meter { margin-top:18px; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    .metric { background:#10233a; border:1px solid #244463; border-radius:8px; padding:12px 8px; text-align:center; }
+    .metric b { display:block; color:var(--cyan); font-size:22px; }
+    .metric small { color:#91a8c2; font-size:10px; }
+    .scanline { height:7px; border-radius:10px; background:#142b45; margin-top:12px; overflow:hidden; }
+    .scanline i { display:block; height:100%; width:78%; background:linear-gradient(90deg,#238cff,#6ce2ff); border-radius:10px; }
+    section { padding:62px 0; }
+    .section-title { font-size:32px; margin:0 0 10px; }
+    .section-lead { color:var(--muted); margin:0 0 28px; }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .card { border:1px solid var(--line); border-radius:13px; padding:21px; background:linear-gradient(150deg,#111f33,#0c1422); }
+    .card .symbol { font-size:23px; color:var(--cyan); }
+    .card h3 { margin:8px 0 5px; font-size:17px; }
+    .card p { color:var(--muted); font-size:14px; margin:0; }
+    .download-panel { border:1px solid #2c5a8d; border-radius:18px; padding:30px; background:linear-gradient(120deg,#102849,#0d1727); display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center; }
+    .version { display:inline-block; color:#071321; background:var(--cyan); border-radius:20px; padding:3px 10px; font-size:11px; font-weight:900; letter-spacing:1px; }
+    .download-panel h2 { margin:12px 0 4px; font-size:27px; }
+    .download-panel p { margin:0; color:var(--muted); }
+    .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:13px; counter-reset:step; }
+    .step { border:1px solid var(--line); border-radius:12px; padding:18px; background:#0e1929; }
+    .step:before { counter-increment:step; content:"0" counter(step); color:var(--blue); font-weight:900; font-size:20px; }
+    .step b { display:block; margin:8px 0 4px; }
+    .step p { margin:0; color:var(--muted); font-size:13px; }
+    .notice { border-left:3px solid #e5b85c; background:#e5b85c12; color:#e8d9b9; padding:14px 17px; border-radius:5px; font-size:13px; margin-top:22px; }
+    footer { border-top:1px solid #ffffff14; padding:26px 0; color:#8295ad; font-size:12px; }
+    footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+    @media(max-width:760px) { .hero { grid-template-columns:1fr; padding:65px 0 45px; } .cards { grid-template-columns:1fr 1fr; } .steps { grid-template-columns:1fr 1fr; } .download-panel { grid-template-columns:1fr; } nav a { margin-left:10px; } }
+    @media(max-width:480px) { .cards,.steps { grid-template-columns:1fr; } nav .links { display:none; } h1 { font-size:46px; } }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="brand">PROJECT <span>PEAK</span></div>
+      <div class="links"><a href="#features">Features</a><a href="#download">Download</a><a href="#install">Install</a></div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow">Windows performance toolkit</div>
+      <h1>GET MORE FROM<br>YOUR <span>PC.</span></h1>
+      <p class="lead">Scan your system, review hardware details, and run careful maintenance with PROJECT PEAK. Built to help you understand what is holding your PC back before changing things.</p>
+      <div class="actions">
+        <a class="btn primary" href="downloads/Project_PEAK_PC_Optimizer_v1.0.zip" download>↓ &nbsp; Download v1.0</a>
+        <a class="btn secondary" href="#features">Explore features</a>
+      </div>
+    </div>
+    <div class="visual" aria-label="Illustration of a PC performance dashboard">
+      <div class="monitor">
+        <div class="monitor-top"><span>PROJECT PEAK / SYSTEM OVERVIEW</span><span>V1.0</span></div>
+        <div class="meter">
+          <div class="metric"><b>CPU</b><small>HARDWARE SCAN</small></div>
+          <div class="metric"><b>GPU</b><small>DISPLAY INFO</small></div>
+          <div class="metric"><b>RAM</b><small>MEMORY INFO</small></div>
+        </div>
+        <div style="color:#9ab5d1;font-size:11px;margin-top:20px">SYSTEM ANALYSIS</div>
+        <div class="scanline"><i></i></div>
+        <div style="display:flex;justify-content:space-between;color:#7794b2;font-size:10px;margin-top:9px"><span>HARDWARE & STORAGE REPORT</span><span>READY</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="features">
+    <div class="wrap">
+      <h2 class="section-title">What v1.0 includes</h2>
+      <p class="section-lead">A safe starting point for checking and maintaining your Windows PC.</p>
+      <div class="cards">
+        <article class="card"><div class="symbol">⌕</div><h3>Hardware scan</h3><p>Collects your CPU, memory, graphics, Windows and drive information.</p></article>
+        <article class="card"><div class="symbol">▤</div><h3>System report</h3><p>Creates a report you can review and share to help identify bottlenecks.</p></article>
+        <article class="card"><div class="symbol">⌫</div><h3>Safe cleanup</h3><p>Offers cleanup of older files in your Windows temporary folder only.</p></article>
+        <article class="card"><div class="symbol">↶</div><h3>Restore point</h3><p>Includes an option to request a Windows restore point before changes.</p></article>
+        <article class="card"><div class="symbol">⌁</div><h3>Network maintenance</h3><p>Refreshes the Windows DNS cache without changing network configuration.</p></article>
+        <article class="card"><div class="symbol">▣</div><h3>Simple launcher</h3><p>Open the optimizer from a straightforward menu with numbered options.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="wrap">
+      <div class="download-panel">
+        <div>
+          <span class="version">CURRENT RELEASE · V1.0</span>
+          <h2>PROJECT PEAK PC Optimizer</h2>
+          <p>Windows toolkit · ZIP package · Free</p>
+        </div>
+        <a class="btn primary" href="downloads/Project_PEAK_PC_Optimizer_v1.0.zip" download>Download v1.0</a>
+      </div>
+      <div class="notice"><b>Important:</b> v1.0 is a conservative scan and maintenance tool. It does not overclock hardware, modify graphics drivers, disable security protections, or promise a specific FPS increase. Review its report before making further changes.</div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="wrap">
+      <h2 class="section-title">How to install</h2>
+      <p class="section-lead">Get started in a few steps.</p>
+      <div class="steps">
+        <div class="step"><b>Download</b><p>Press the Download v1.0 button above.</p></div>
+        <div class="step"><b>Extract</b><p>Right-click the ZIP file and choose Extract All.</p></div>
+        <div class="step"><b>Launch</b><p>Open the folder and double-click START_PROJECT_PEAK.bat.</p></div>
+        <div class="step"><b>Scan first</b><p>Choose option 1 and find the report on your Desktop.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 PROJECT PEAK</span><span>Version 1.0 · Windows PC toolkit</span></div>
+</footer>
+</body>
+</html>
